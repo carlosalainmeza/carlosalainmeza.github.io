@@ -1,0 +1,11 @@
+BODY {
+    font-family: Tahoma,Geneva,sans-serif;
+    font-size: 12px;
+}
+#CENTRADO {
+    text-align: center;
+    color: #000;
+}
+#COLORFILA {
+    background-color: #999;
+}

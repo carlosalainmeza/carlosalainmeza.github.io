@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar Usuario</title>
+    <link href="estilo_formulario.css" rel="stylesheet">
+    <meta charset="utf-8">
+</head>
+<body>
+    <section id="formulario">
+        <form name="frmactualizacion" method="post" action="process_update.php">
+            <h1>Actualizar Usuario</h1>
+            <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
+            <label>Nombres y apellidos <input name="txtnombres" type="text" size="60" value="<?php echo $row['nombres']; ?>" required /></label>
+            <label>DNI <input type="text" name="txtdni" size="60" value="<?php echo $row['dni']; ?>" required /></label>
+            <label>Teléfono <input type="tel" name="txtfono" size="60" value="<?php echo $row['telefono']; ?>" /></label>
+            <label>Estudios realizados</label>
+            <label><input type="checkbox" name="chkprimaria" <?php echo (strpos($row['estudios'], 'Primaria') !== false) ? 'checked' : ''; ?> /> Primaria</label>
+            <label><input type="checkbox" name="chksecundaria" <?php echo (strpos($row['estudios'], 'Secundaria') !== false) ? 'checked' : ''; ?> /> Secundaria</label>
+            <label><input type="checkbox" name="chktecnico" <?php echo (strpos($row['estudios'], 'Técnico') !== false) ? 'checked' : ''; ?> /> Técnico</label>
+            <label><input type="checkbox" name="chkuniversitario" <?php echo (strpos($row['estudios'], 'Universitario') !== false) ? 'checked' : ''; ?> /> Universitario</label>
+            <label>Estado civil</label>
+            <label><input type="radio" name="btnestado" value="s" <?php echo ($row['estado_civil'] == 's') ? 'checked' : ''; ?> /> Soltero</label>
+            <label><input type="radio" name="btnestado" value="c" <?php echo ($row['estado_civil'] == 'c') ? 'checked' : ''; ?> /> Casado</label>
+            <label><input type="radio" name="btnestado" value="v" <?php echo ($row['estado_civil'] == 'v') ? 'checked' : ''; ?> /> Viudo</label>
+            <label><input type="radio" name="btnestado" value="d" <?php echo ($row['estado_civil'] == 'd') ? 'checked' : ''; ?> /> Divorciado</label>
+            <label>Provincia <input type="text" name="txtprovincia" list="provincias" value="<?php echo $row['provincia']; ?>" /></label>
+            <datalist id="provincias">
+                <option value="Lima" />
+                <option value="Arequipa" />
+                <option value="Tacna" />
+                <option value="Trujillo" />
+                <option value="Huancayo" />
+            </datalist>
+            <label>Correo electrónico <input type="email" name="txtemail" size="60" value="<?php echo $row['correo']; ?>" /></label>
+            <label>Clave personal <input type="password" name="txtclave" size="60" value="<?php echo $row['clave']; ?>" placeholder="Máximo 6 caracteres" /></label>
+            <label>Color de preferencia <input type="color" name="txtcolor" value="<?php echo $row['color_preferencia']; ?>" /></label>
+            <label>Fecha de nacimiento <input type="datetime-local" name="txtfecha" value="<?php echo date('Y-m-d\TH:i', strtotime($row['fecha_nacimiento'])); ?>" /></label>
+            <input type="submit" value="ACTUALIZAR">
+            <input type="reset" value="REESTABLECER">
+        </form>
+    </section>
+</body>
+</html>
